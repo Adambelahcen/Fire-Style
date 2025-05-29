@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Style - Collection Exclusive</title>
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        .dancing-script { font-family: 'Dancing Script', cursive; }
+        .pacifico { font-family: 'Pacifico', cursive; }
+        .poppins { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 50%, #fef7f7 100%);
+        }
+        
+        .heart-bounce {
+            animation: heartBounce 1.5s ease-in-out infinite;
+        }
+        
+        .sparkle {
+            animation: sparkle 2s linear infinite;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes heartBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .confetti {
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.15);
+        }
+        
+        .choice-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .choice-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .correct {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            color: white !important;
+        }
+        
+        .incorrect {
+            background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+            color: white !important;
+        }
+        
+        .disabled {
+            opacity: 0.6;
+            cursor: not-allowed !important;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    
+    <!-- Landing Page -->
+    <div id="landing-page" class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="pacifico text-6xl text-pink-600 mb-4">Fire Style</h1>
+            <p class="dancing-script text-2xl text-pink-500">✨ Collection Exclusive Maroc ✨</p>
+            <div class="mt-4">
+                <i class="fas fa-heart text-pink-400"></i>
+                <i class="fas fa-sparkles text-pink-300 mx-2"></i>
+                <i class="fas fa-heart text-pink-400"></i>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="text-center mb-8">
+            <div class="inline-flex space-x-8 text-pink-600 poppins font-medium">
+                <span class="cursor-pointer hover:text-pink-800">Nouveautés</span>
+                <span class="cursor-pointer hover:text-pink-800">Femmes</span>
+                <span class="cursor-pointer hover:text-pink-800">Accessoires</span>
+                <span class="cursor-pointer hover:text-pink-800">Sale</span>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <h2 class="dancing-script text-4xl text-pink-700 mb-4">🔥 Collection Limitée 🔥</h2>
+            <p class="poppins text-lg text-pink-600 max-w-2xl mx-auto">
+                Découvrez notre nouvelle collection inspirée du style marocain moderne. 
+                Des pièces uniques pour des moments exceptionnels.
+            </p>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-2xl p-6 shadow-lg" onclick="startQuiz()">
+                <div class="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl h-64 mb-4 flex items-center justify-center">
+                    <i class="fas fa-fire text-6xl text-pink-500"></i>
+                </div>
+                <h3 class="poppins font-semibold text-xl text-gray-800 mb-2">Blaze Hoodie</h3>
+                <p class="text-pink-600 poppins mb-3">Sweatshirt premium en coton bio</p>
+                <div class="flex justify-between items-center">
+                    <span class="dancing-script text-2xl text-pink-700 font-bold">899 DH</span>
+                    <button class="bg-pink-500 text-white px-4 py-2 rounded-full poppins font-medium hover:bg-pink-600">
+                        Découvrir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-2xl p-6 shadow-lg" onclick="startQuiz()">
+                <div class="bg-gradient-to-br from-red-100 to-pink-200 rounded-xl h-64 mb-4 flex items-center justify-center">
+                    <i class="fas fa-running text-6xl text-red-500"></i>
+                </div>
+                <h3 class="poppins font-semibold text-xl text-gray-800 mb-2">Heat Sneakers</h3>
+                <p class="text-pink-600 poppins mb-3">Baskets design édition limitée</p>
+                <div class="flex justify-between items-center">
+                    <span class="dancing-script text-2xl text-pink-700 font-bold">1299 DH</span>
+                    <button class="bg-pink-500 text-white px-4 py-2 rounded-full poppins font-medium hover:bg-pink-600">
+                        Découvrir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-2xl p-6 shadow-lg" onclick="startQuiz()">
+                <div class="bg-gradient-to-br from-purple-100 to-pink-200 rounded-xl h-64 mb-4 flex items-center justify-center">
+                    <i class="fas fa-gem text-6xl text-purple-500"></i>
+                </div>
+                <h3 class="poppins font-semibold text-xl text-gray-800 mb-2">Spark Accessory</h3>
+                <p class="text-pink-600 poppins mb-3">Bijou artisanal fait main</p>
+                <div class="flex justify-between items-center">
+                    <span class="dancing-script text-2xl text-pink-700 font-bold">599 DH</span>
+                    <button class="bg-pink-500 text-white px-4 py-2 rounded-full poppins font-medium hover:bg-pink-600">
+                        Découvrir
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 text-pink-500 poppins">
+            <p>💕 Livraison gratuite au Canada & Maroc 💕</p>
+        </footer>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quiz-section" class="hidden container mx-auto px-4 py-8 max-w-4xl">
+        <div class="text-center mb-8">
+            <h2 class="pacifico text-4xl text-pink-600 mb-2">Surprise! 💕</h2>
+            <p class="dancing-script text-2xl text-pink-500">Special Quiz for m adorable Dounia</p>
+            <div class="mt-4">
+                <span id="question-counter" class="poppins bg-pink-100 text-pink-700 px-4 py-2 rounded-full">Question 1/10</span>
+            </div>
+        </div>
+
+        <div id="quiz-container" class="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 id="question-text" class="dancing-script text-3xl text-gray-800 mb-8 text-center"></h3>
+            <div id="choices-container" class="space-y-4">
+                <!-- Choices will be inserted here -->
+            </div>
+            <div class="text-center mt-8">
+                <button id="next-btn" class="hidden bg-pink-500 text-white px-8 py-3 rounded-full poppins font-medium hover:bg-pink-600" onclick="nextQuestion()">
+                    Question suivante 💕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Page -->
+    <div id="final-page" class="hidden container mx-auto px-4 py-8 text-center">
+        <div class="max-w-4xl mx-auto">
+            <!-- Confetti -->
+            <div id="confetti-container" class="fixed inset-0 pointer-events-none z-10"></div>
+            
+            <!-- Main Message -->
+            <div class="bg-white rounded-3xl p-12 shadow-2xl float">
+                <div class="mb-8">
+                    <i class="fas fa-heart text-8xl text-red-500 heart-bounce"></i>
+                </div>
+                
+                <h1 class="dancing-script text-6xl text-pink-700 mb-6">
+                    I love you Dounia
+                </h1>
+                
+                <h2 class="pacifico text-4xl text-pink-600 mb-8">
+                    Happy birthday my love! 🎂
+                </h2>
+                
+                <div class="dancing-script text-2xl text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8">
+                    <p>You are the most beautiful thing that happened to my life. 💕</p>
+                    <p class="mt-4">Even with the distance that has been always between us, my heart is always with you. ✨</p>
+                    <p class="mt-4">May this new year bring you the joy that you deserve, princess. 👑</p>
+                </div>
+                
+                <div class="text-3xl mb-6">
+                    <i class="fas fa-heart text-red-400 sparkle"></i>
+                    <i class="fas fa-star text-yellow-400 sparkle" style="animation-delay: 0.5s;"></i>
+                    <i class="fas fa-heart text-pink-400 sparkle" style="animation-delay: 1s;"></i>
+                </div>
+                
+                <p class="dancing-script text-3xl text-pink-600">
+                    With all Love,<br>
+                    <strong>Adam Belahcen</strong> 💖
+                </p>
+                
+                <div class="mt-8">
+                    <button onclick="restartExperience()" class="bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-3 rounded-full poppins font-medium hover:from-pink-600 hover:to-red-600">
+                        Redo this beautiful experience 💕
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        
+        const questions = [
+            {
+                question: "Who is the love of your life? 💙",
+                choices: ["Adam", "Adam", "Adam"],
+                correct: 0
+            },
+            {
+                question: "what does Adam do for life?",
+                choices: ["Gaming all day", "researching about the dumb fucking question you ask all day cuz there are no actual answers discovered yet", "maths and economics"],
+                correct: 1
+            },
+            {
+                question: "where did u first meet adam?",
+                choices: ["Facebook", "met him in my past life and we are dimensionally connected", " Club master Rabat ( billard)"],
+                correct: 1
+            },
+            {
+                question: "what's the most unforgettable moment in ur life",
+                choices: ["that one morning in a cafe with Adam", " texting with Adam", "laughing histeracly with Adam"],
+                correct: 0
+            },
+            {
+                question: "what makes adam most angry?",
+                choices: ["dogshit imbred black nigger orphan raped teamates in his ranked games.", "seing you unhappy", "hungry"],
+                correct: 1
+            },
+            {
+                question: "what does adam usually say after seing ur beautiful face ",
+                choices: [" malk 3la dak zin kaml fin bagha twsli", "beautiful ", "grogeous"],
+                correct: 0
+            },
+            {
+                question: "malk 3la dak zin kamel fin bagha twsli? ",
+                choices: ["mabaghach nwsl l ta blasa hta tgolha lia nta hit nta li katgolia chnu ndir", "kolchi dialk ahbiba", "nta li malk 3la dak zin kaml?"],
+                correct: 1
+            },
+            {
+                question: "Are you as happy as adam when u cameback into his lfie?",
+                choices: ["no adam is the most happiest", "Adam loves me more than anything in his life", " I cant reach to adam's level of happiness when being with me "],
+                correct: 1
+            },
+            {
+                question: "Momkin t3tini chi bosa?",
+                choices: ["a77 w nchdek", "khod kter men bosa abb hh", "kolek zebda w mni nebda"],
+                correct: 2
+            },
+            {
+                question: "would you marry me? ",
+                choices: ["yes daddy", "yes my lord", "yes papi"],
+                correct: 2
+            }
+        ];
+
+        function startQuiz() {
+            document.getElementById('landing-page').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('question-text').textContent = question.question;
+            document.getElementById('question-counter').textContent = `Question ${currentQuestion + 1}/10`;
+            
+            const choicesContainer = document.getElementById('choices-container');
+            choicesContainer.innerHTML = '';
+            
+            question.choices.forEach((choice, index) => {
+                const button = document.createElement('button');
+                button.className = 'choice-btn w-full bg-gradient-to-r from-pink-100 to-pink-200 text-pink-800 p-4 rounded-xl poppins font-medium text-left hover:from-pink-200 hover:to-pink-300';
+                button.textContent = choice;
+                button.onclick = () => selectAnswer(index, button);
+                choicesContainer.appendChild(button);
+            });
+            
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function selectAnswer(selectedIndex, buttonElement) {
+            const question = questions[currentQuestion];
+            const buttons = document.querySelectorAll('.choice-btn');
+            
+            // Disable all buttons
+            buttons.forEach(btn => {
+                btn.classList.add('disabled');
+                btn.onclick = null;
+            });
+            
+            // Show correct/incorrect feedback
+            if (selectedIndex === question.correct) {
+                buttonElement.classList.add('correct');
+                correctAnswers++;
+            } else {
+                buttonElement.classList.add('incorrect');
+                // Also highlight the correct answer
+                buttons[question.correct].classList.add('correct');
+            }
+            
+            // Show next button after a delay
+            setTimeout(() => {
+                document.getElementById('next-btn').classList.remove('hidden');
+            }, 1500);
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showFinalPage();
+            }
+        }
+
+        function showFinalPage() {
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('final-page').classList.remove('hidden');
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#ff69b4', '#ff1493', '#ff6347', '#ffd700', '#ff69b4'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 5000);
+                }, i * 100);
+            }
+            
+            // Continue creating confetti every 3 seconds
+            setInterval(() => {
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.style.left = Math.random() * 100 + '%';
+                        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.width = confetti.style.height = (Math.random() * 10 + 5) + 'px';
+                        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                        container.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 5000);
+                    }, i * 100);
+                }
+            }, 3000);
+        }
+
+        function restartExperience() {
+            currentQuestion = 0;
+            correctAnswers = 0;
+            document.getElementById('final-page').classList.add('hidden');
+            document.getElementById('landing-page').classList.remove('hidden');
+            document.getElementById('confetti-container').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
